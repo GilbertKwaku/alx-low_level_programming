@@ -1,24 +1,23 @@
-#include "main.h"
-
 /**
- * _strpbrk - Return a pointer to byte s.
- * @s: char s
- * @accept: char accept
- * Return: Always 0.
+ * _strpbrk - searches a string for any set of bytes
+ * @s: The sring to be searched.
+ * @accept: The set of bytes to be searched for.
+ * Return: If a set is matched - a pointer to the matched byte.
+ *         Null if no set is matched
  */
 char *_strpbrk(char *s, char *accept)
 {
-	int i, ii;
+	int index;
 
-	for (i = 0; s[i] != '\0'; i++)
+	while (*s)
 	{
-		for (ii = 0; accept[ii] != '\0'; ii++)
+		for (index = 0; accept[index]; index++)
 		{
-		if (s[i] == accept[ii])
-		{
-			return (s + i);
+			if (*s == accept[index])
+				return (s);
 		}
-		}
-	}
-}
 
+		s++;
+	}
+	return ('\0');
+}
